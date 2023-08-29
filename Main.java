@@ -1,13 +1,14 @@
+//importando Libs nescessarias
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+//criando nosso executavel
 public class Main {
-
+//Criando a lista de veiculos
     public static void main(String[] args) {
         List<Veiculo> veiculos = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        
+        //Funcao para pegar o inPut do usuario no terminal
         char opcao = ' ';
         while (opcao != 'd') {
             System.out.println("Escolha uma opção:");
@@ -16,7 +17,7 @@ public class Main {
             System.out.println("c) Remover veículo");
             System.out.println("d) Sair");
             opcao = scanner.next().charAt(0);
-            
+            //Enquato a opcao for diferente de D ele entre no While, ou de for igual sai
             if (opcao == 'a') {
                 cadastrarVeiculo(veiculos, scanner);
             } else if (opcao == 'b') {
@@ -30,7 +31,7 @@ public class Main {
             }
         }
     }
-
+//Funcao para cadastrar o veiculo e seus dados, usando add para adicionar os parametros (marca, modelo, ano) na lista (Veiculo)
     public static void cadastrarVeiculo(List<Veiculo> veiculos, Scanner scanner) {
         System.out.println("Informe a marca do veículo:");
         String marca = scanner.next();
@@ -42,7 +43,8 @@ public class Main {
         veiculos.add(new Veiculo(marca, modelo, ano));
         System.out.println("Veículo cadastrado com sucesso!");
     }
-
+//Usando for para acessar a lista e monstrando ao usuario os veiculos cadastrados
+//Definindo uma variavel inteira anoAtual para calcular se o veiculo paga ou nao IPVA
     public static void listarVeiculos(List<Veiculo> veiculos) {
         int anoAtual = 2023;
         for (Veiculo veiculo : veiculos) {
@@ -52,7 +54,7 @@ public class Main {
                                " | Idade: " + idade + " anos | IPVA: " + ipva);
         }
     }
-
+//Usa metodo remove passando o indice dado pelo usuario para remover o respectivo veiculo da lista
     public static void removerVeiculo(List<Veiculo> veiculos, Scanner scanner) {
         System.out.println("Informe o índice do veículo que deseja remover:");
         int indice = scanner.nextInt();
@@ -64,7 +66,7 @@ public class Main {
         }
     }
 }
-
+//Instanciando a classe dos objetos
 class Veiculo {
     private String marca;
     private String modelo;
